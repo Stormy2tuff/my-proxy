@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Browser</title>
+
+  <style>
+    body{
+      margin:0;
+      background:#111;
+      color:white;
+      font-family:Arial;
+    }
+
+    input{
+      width:100%;
+      padding:15px;
+      border:none;
+      outline:none;
+      font-size:18px;
+      background:#222;
+      color:white;
+    }
+
+    iframe{
+      width:100%;
+      height:calc(100vh - 55px);
+      border:none;
+    }
+  </style>
+</head>
+<body>
+
+<input id="url" placeholder="Enter URL">
+
+<iframe id="frame"></iframe>
+
+<script>
+const url = document.getElementById("url");
+const frame = document.getElementById("frame");
+
+url.addEventListener("keydown", e => {
+  if(e.key === "Enter"){
+    let value = url.value;
+
+    if(!value.startsWith("https://")){
+      value = "https://" + value;
+    }
+
+    frame.src = value;
+  }
+});
+</script>
+
+</body>
+</html>
